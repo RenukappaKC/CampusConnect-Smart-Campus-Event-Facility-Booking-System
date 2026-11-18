@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusConnect | Campus bookings made simple</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">C</span><span>Campus<span class="brand-accent">Connect</span><small>SMART CAMPUS PORTAL</small></span></a>
+  <nav><a href="#facilities">Facilities</a><a href="#events">Events</a><button id="logoutBtn" class="btn btn-quiet hidden">Sign out</button></nav>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">ONE CAMPUS. ONE CONNECTED SPACE.</p><h1>Make campus<br><span>work for you.</span></h1>
+    <p class="hero-copy">Find a space, book a facility, and be part of what’s happening on campus — all in one place.</p>
+    <a class="btn btn-primary" href="#booking">Book a facility <span>→</span></a></div>
+    <div class="hero-art"><div class="art-card card-one"><span>🏛️</span><b>Seminar Hall A</b><small>120 seats · Academic Block</small></div><div class="art-card card-two"><span>💡</span><b>Tech Innovation Day</b><small>December 5 · 10:00 AM</small></div><div class="art-orbit"></div></div>
+  </section>
+  <section id="authPanel" class="auth-panel">
+    <div><p class="eyebrow">GET STARTED</p><h2>Welcome to your campus hub</h2><p class="muted">Sign in to manage bookings and event registrations.</p></div>
+    <form id="authForm" class="auth-form">
+      <div class="tabs"><button type="button" class="tab active" data-mode="login">Sign in</button><button type="button" class="tab" data-mode="register">Create account</button></div>
+      <label id="nameWrap" class="hidden">Full name<input name="name" minlength="2" placeholder="Your name"></label>
+      <label>Email address<input name="email" type="email" required placeholder="you@college.edu"></label>
+      <label>Password<input name="password" type="password" required minlength="8" placeholder="At least 8 characters"></label>
+      <button class="btn btn-primary full" type="submit" id="authSubmit">Sign in</button>
+      <p class="hint">Demo student: student@campus.test / Student@123<br>Demo admin: admin@campus.test / Admin@123</p>
+      <p id="authMessage" class="message" role="status"></p>
+    </form>
+  </section>
+  <section id="dashboard" class="dashboard hidden">
+    <div class="section-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2 id="welcomeTitle">Dashboard</h2></div><span id="rolePill" class="pill">Student</span></div>
+    <div class="stats"><article><span>📅</span><b id="statBookings">0</b><small>My bookings</small></article><article><span>⏳</span><b id="statPending">0</b><small>Pending requests</small></article><article><span>🎟️</span><b id="statEvents">0</b><small>Campus events</small></article></div>
+    <div class="section-heading compact"><h3>Booking requests</h3></div><div id="bookingList" class="booking-list"></div>
+    <div id="adminPanel" class="hidden"><div class="section-heading compact"><h3>Admin review queue</h3></div><div id="adminQueue" class="booking-list"></div></div>
+  </section>
+  <section id="facilities" class="content-section">
+    <div class="section-heading"><div><p class="eyebrow">FIND YOUR SPACE</p><h2>Campus facilities</h2></div><p class="muted">Spaces designed for ideas, learning and collaboration.</p></div>
+    <div id="facilityGrid" class="facility-grid"></div>
+  </section>
+  <section id="booking" class="booking-section">
+    <div><p class="eyebrow">RESERVE A SPACE</p><h2>Plan your next<br>campus activity.</h2><p class="muted">Submit a request and the campus administrator will review it.</p><div class="booking-note"> <span>✓</span> Double-booking protection <span>✓</span> Booking status tracking</div></div>
+    <form id="bookingForm" class="form-card">
+      <label>Facility<select name="facilityId" id="facilitySelect" required><option value="">Choose a facility</option></select></label>
+      <div class="two-col"><label>Date<input name="date" type="date" required></label><label>Attendees<input name="attendees" type="number" min="1" max="1000" value="10" required></label></div>
+      <div class="two-col"><label>Start time<input name="startTime" type="time" min="08:00" max="19:30" value="10:00" required></label><label>End time<input name="endTime" type="time" min="08:30" max="20:00" value="11:00" required></label></div>
+      <label>Purpose<textarea name="purpose" minlength="5" maxlength="180" rows="3" required placeholder="Describe your activity..."></textarea></label>
+      <button class="btn btn-primary full" type="submit">Submit booking request →</button><p id="bookingMessage" class="message" role="status"></p>
+    </form>
+  </section>
+  <section id="events" class="content-section events-section">
+    <div class="section-heading"><div><p class="eyebrow">WHAT'S HAPPENING</p><h2>Campus events</h2></div><p class="muted">Discover, participate and connect.</p></div>
+    <div id="eventGrid" class="event-grid"></div>
+    <form id="eventForm" class="form-card admin-create hidden"><h3>Create a campus event</h3><label>Event title<input name="title" required minlength="3"></label><label>Description<textarea name="description" rows="2"></textarea></label><div class="two-col"><label>Date<input name="date" type="date" required></label><label>Venue<input name="venue" required></label></div><label>Capacity<input name="capacity" type="number" min="1" max="1000" required value="50"></label><button class="btn btn-primary">Publish event</button><p class="message" id="eventMessage"></p></form>
+  </section>
+</main>
+<footer><div class="brand"><span class="brand-mark">C</span><span>Campus<span class="brand-accent">Connect</span><small>SMART CAMPUS PORTAL</small></span></div><p>Built for a smarter, more connected campus.</p><small>FST AAT-2 · Academic Year 2026–2027</small></footer>
+<div id="toast" class="toast" role="status"></div>
+</body></html>
